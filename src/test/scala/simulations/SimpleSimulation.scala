@@ -2,11 +2,13 @@ package simulations
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import org.slf4j.LoggerFactory
 
 /**
   * Created by Yuriy Stul on 9/3/2016.
   */
 class SimpleSimulation extends Simulation {
+  val logger = LoggerFactory.getLogger(this.getClass.getName)
   val httpConf = http
     .baseURL("http://computer-database.gatling.io")
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
@@ -15,9 +17,11 @@ class SimpleSimulation extends Simulation {
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
 
+  logger.info("Go!")
+
   val scn = scenario("SimpleSimulation")
     .exec(http("request_1")
-    .get("/"))
+      .get("/"))
     .pause(5)
 
   setUp(
