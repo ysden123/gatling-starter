@@ -13,7 +13,10 @@ mvn compile
 ```
 At this point You have the empty Gatling project for IntelliJ
 
-## Running Simulations
+## Running Simulations from IntelliJ
+Set VM option to -DtestClass=[class package].[class name], e.g. -DtestClass=simulations.SimpleSimulation
+
+## Running Simulations from Command Line
 
 To execute simulations run maven command:
 ```

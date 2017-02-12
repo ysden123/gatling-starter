@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory
   * Created by Yuriy Stul on 9/3/2016.
   */
 class PreInitSimulation extends Simulation {
-  val logger = LoggerFactory.getLogger(this.getClass.getName)
-  val httpConf = http
+  private val logger = LoggerFactory.getLogger(this.getClass.getName)
+  private val httpConf = http
     .baseURL("http://computer-database.gatling.io")
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .doNotTrackHeader("1")
@@ -19,10 +19,10 @@ class PreInitSimulation extends Simulation {
 
   logger.info("Go!")
 
-  val scn0 = scenario("Initialization")
+  private val scn0 = scenario("Initialization")
     .exec(http("init")
       .get("/"))
-  val scn = scenario("Simulation")
+  private val scn = scenario("Simulation")
     .exec(http("request")
       .get("/"))
     .pause(5)
