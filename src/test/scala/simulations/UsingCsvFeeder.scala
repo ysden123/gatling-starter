@@ -7,7 +7,7 @@ import io.gatling.http.Predef._
   * Created by Yuriy Stul on 9/3/2016.
   */
 class UsingCsvFeeder extends Simulation {
-  val httpConf = http
+  private val httpConf = http
     .baseURL("http://computer-database.gatling.io")
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .doNotTrackHeader("1")
@@ -15,9 +15,9 @@ class UsingCsvFeeder extends Simulation {
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
 
-  val csvFeeder = csv("csvFeederTest.csv").random;
+  private val csvFeeder = csv("csvFeederTest.csv").random;
 
-  val scn = scenario("Using Csv Feeder")
+  private val scn = scenario("Using Csv Feeder")
     .feed(csvFeeder)
     .exec(
       http("request_1")

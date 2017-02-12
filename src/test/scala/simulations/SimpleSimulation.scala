@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory
   * Created by Yuriy Stul on 9/3/2016.
   */
 class SimpleSimulation extends Simulation {
-  val logger = LoggerFactory.getLogger(this.getClass.getName)
-  val httpConf = http
+  private val logger = LoggerFactory.getLogger(this.getClass.getName)
+  private val httpConf = http
     .baseURL("http://computer-database.gatling.io")
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .doNotTrackHeader("1")
@@ -19,7 +19,7 @@ class SimpleSimulation extends Simulation {
 
   logger.info("Go!")
 
-  val scn = scenario("SimpleSimulation")
+  private val scn = scenario("SimpleSimulation")
     .exec(http("request_1")
       .get("/"))
     .pause(5)
