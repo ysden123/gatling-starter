@@ -1,32 +1,22 @@
 # gatling-starter
 Start variant of the Gatling project
 
-## Project Initialization
-The initial state is empty folder. To create empty Gatling project for IntelliJ follow these steps:
- - Initialize project using [Maven archetype for Gatling](http://gatling.io/docs/2.2.2/extensions/maven_archetype.html)
- - Reorganize folders
- - Import folder as project (mark Maven as external ...)
- - Check Scala's version in the pom.xml
- - Check project with script
-```
-mvn compile
-```
-At this point You have the empty Gatling project for IntelliJ
 
-## Running Simulations from IntelliJ
-Set VM option to -DtestClass=[class package].[class name], e.g. -DtestClass=simulations.SimpleSimulation
+### Run
 
-## Running Simulations from Command Line
+All tests:
+```
+sbt "gatling:test"
+```
 
-To execute simulations run maven command:
+Single test:
 ```
-mvn gatling:execute -Dgatling.simulationClass=<package>.<XYZSimulation>
+sbt "gatling:testOnly simulations.PreInitSimulation"
+sbt "gatling:testOnly simulations.SimpleSimulation"
+sbt "gatling:testOnly simulations.UsingCsvFeeder"
 ```
-For example:
+
+Report:
 ```
-mvn gatling:execute -Dgatling.simulationClass=simulations.SimpleSimulation
-```
-or simply:
-```
-mvn gatling:execute
+sbt "gatling:lastReport"
 ```
